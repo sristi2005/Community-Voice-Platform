@@ -1,0 +1,18 @@
+<h2>Submit Feedback</h2>
+<form method="POST">
+    Title: <input type="text" name="title" required><br><br>
+    Description:<br><textarea name="description" required></textarea><br><br>
+    Category:
+    <select name="category">
+        <option value="Maintenance">Maintenance</option>
+        <option value="Safety">Safety</option>
+        <option value="Other">Other</option>
+    </select><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Your Feedbacks</h2>
+{% for fb in feedbacks %}
+    <p><strong>{{ fb.title }}</strong> ({{ fb.category }}) - Status: {{ fb.status }} <br> {{ fb.created_at }}</p><hr>
+{% endfor %}
+<a href="/logout">Logout</a>

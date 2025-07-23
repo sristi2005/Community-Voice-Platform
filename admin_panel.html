@@ -1,0 +1,33 @@
+<h2>Admin Panel</h2>
+<table border="1">
+<tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Status</th>
+    <th>Change Status</th>
+</tr>
+
+{% for fb in feedbacks %}
+<tr>
+    <td>{{ fb.name }}</td>
+    <td>{{ fb.title }}</td>
+    <td>{{ fb.description }}</td>
+    <td>{{ fb.category }}</td>
+    <td>{{ fb.status }}</td>
+    <td>
+        <form method="POST">
+            <input type="hidden" name="feedback_id" value="{{ fb.feedback_id }}">
+            <select name="status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+    </td>
+</tr>
+{% endfor %}
+</table>
+<a href="/logout">Logout</a>
